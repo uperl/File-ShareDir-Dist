@@ -65,6 +65,9 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
     it would not.  For me this covers most of my needs when developing a Perl module with a share
     directory.
 
+    [prove](https://metacpan.org/pod/prove) foils this huristic by making `@INC` absolute paths.  To get around that you can use
+    [App::Prove::Plugin::ShareDirDist](https://metacpan.org/pod/App::Prove::Plugin::ShareDirDist).
+
 - Built in override.
 
     The hash `%File::ShareDir::Dist::over` can be used to override what `dist_share` returns.

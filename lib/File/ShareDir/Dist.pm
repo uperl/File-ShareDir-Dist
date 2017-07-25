@@ -75,6 +75,9 @@ C<dist_share> will return the (absolute) path to ./share/data.  If you invoked i
 it would not.  For me this covers most of my needs when developing a Perl module with a share
 directory.
 
+L<prove> foils this huristic by making C<@INC> absolute paths.  To get around that you can use
+L<App::Prove::Plugin::ShareDirDist>.
+
 =item Built in override.
 
 The hash C<%File::ShareDir::Dist::over> can be used to override what C<dist_share> returns.

@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Add prove plugin: App::Prove::Plugin::ShareDirDist
 
 0.01      2017-07-25 16:20:35 -0400
   - initial version
