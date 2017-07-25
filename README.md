@@ -37,6 +37,10 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
     [File::ShareDir](https://metacpan.org/pod/File::ShareDir) only has [Class::Inspector](https://metacpan.org/pod/Class::Inspector), but since we are only doing per-dist share
     directories we don't even need that.
 
+    The goal of this project is to have no non-core dependencies for the two most recent production
+    versions of Perl.  As of this writing that means Perl 5.26 and 5.24.  In the future, we `may` add
+    dependencies on modules that are not part of the Perl core on older Perls.
+
 - Works in your development tree
 
     Uses the huristic, for determining if you are in a development tree, and if so, uses the common
