@@ -41,7 +41,7 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
     versions of Perl.  As of this writing that means Perl 5.26 and 5.24.  In the future, we `may` add
     dependencies on modules that are not part of the Perl core on older Perls.
 
-- Works in your development tree
+- Works in your development tree.
 
     Uses the huristic, for determining if you are in a development tree, and if so, uses the common
     convention to find the directory named `share`.  If you are using a relative path in `@INC`,
@@ -65,13 +65,40 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
     it would not.  For me this covers most of my needs when developing a Perl module with a share
     directory.
 
+- Built in override.
+
+    The hash `%File::ShareDir::Dist::over` can be used to override what `dist_share` returns.
+    You can also override behavior on the command line using a dash followed by a key value pair
+    joined by the equal sign.  In other words:
+
+        % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+        /.../share
+
+    For [File::ShareDir](https://metacpan.org/pod/File::ShareDir) you have to either mock the `dist_dir` function or install
+    [File::ShareDir::Override](https://metacpan.org/pod/File::ShareDir::Override).
+
 # FUNCTIONS
+
+Functions must be explicitly exported.  They are not exported by default.
 
 ## dist\_share
 
     my $dir = dist_share $dist_name;
+    my $dir = dist_share $module_name;
 
 Returns the absolute path to the share directory of the given distribution.
+
+As a convenience you can also use the "main" module name assoicated with the
+distribution.  That means if you want the share directory for thet dist
+`Foo-Bar-Baz` you may use either `Foo-Bar-Baz` or `Foo::Bar::Baz` to find
+it.
+
+Returns nothing if no share directory could be found.
+
+# CAVEATS
+
+All the stuff that is in [File::ShareDir](https://metacpan.org/pod/File::ShareDir) but not in this module could be considered either
+caveats or features depending on your perspective I suppose.
 
 # SEE ALSO
 

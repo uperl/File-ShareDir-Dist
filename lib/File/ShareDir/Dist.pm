@@ -51,7 +51,7 @@ The goal of this project is to have no non-core dependencies for the two most re
 versions of Perl.  As of this writing that means Perl 5.26 and 5.24.  In the future, we C<may> add
 dependencies on modules that are not part of the Perl core on older Perls.
 
-=item Works in your development tree
+=item Works in your development tree.
 
 Uses the huristic, for determining if you are in a development tree, and if so, uses the common
 convention to find the directory named C<share>.  If you are using a relative path in C<@INC>,
@@ -75,9 +75,23 @@ C<dist_share> will return the (absolute) path to ./share/data.  If you invoked i
 it would not.  For me this covers most of my needs when developing a Perl module with a share
 directory.
 
+=item Built in override.
+
+The hash C<%File::ShareDir::Dist::over> can be used to override what C<dist_share> returns.
+You can also override behavior on the command line using a dash followed by a key value pair
+joined by the equal sign.  In other words:
+
+ % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+ /.../share
+
+For L<File::ShareDir> you have to either mock the C<dist_dir> function or install
+L<File::ShareDir::Override>.
+
 =back
 
 =head1 FUNCTIONS
+
+Functions must be explicitly exported.  They are not exported by default.
 
 =head2 dist_share
 
@@ -91,16 +105,25 @@ distribution.  That means if you want the share directory for thet dist
 C<Foo-Bar-Baz> you may use either C<Foo-Bar-Baz> or C<Foo::Bar::Baz> to find
 it.
 
+Returns nothing if no share directory could be found.
+
 =cut
 
-# TODO: Built in override
 # TODO: Works with PAR
+
+our %over;
 
 sub dist_share ($)
 {
   my($dist_name) = @_;
   
   $dist_name =~ s/::/-/g;
+
+  if(my $dir = $over{$dist_name})
+  {
+    return File::Spec->rel2abs($dir);
+  }
+
   my @pm = split /-/, $dist_name;
   $pm[-1] .= ".pm";
 
@@ -144,7 +167,35 @@ sub dist_share ($)
   return;
 }
 
+sub import
+{
+  my($class, @args) = @_;
+
+  my @modify;
+  
+  foreach my $arg (@args)
+  {
+    if($arg =~ /^-(.*?)=(.*)$/)
+    {
+      $over{$1} = $2;
+    }
+    else
+    {
+      push @modify, $arg;
+    }
+  }
+  
+  @_ = ($class, @modify);
+  
+  goto \&Exporter::import;
+}
+
 1;
+
+=head1 CAVEATS
+
+All the stuff that is in L<File::ShareDir> but not in this module could be considered either
+caveats or features depending on your perspective I suppose.
 
 =head1 SEE ALSO
 
