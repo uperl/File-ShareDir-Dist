@@ -46,6 +46,21 @@ subtest 'simple' => sub {
     is slurp($file), "33\n", 'file content matches';
 
   };
+  
+  subtest 'there and there, using module name' => sub {
+
+    local @INC = (File::Spec->rel2abs(File::Spec->catdir(qw( corpus lib3 ))));
+    my @ret = dist_share 'Foo::Bar::Baz';
+    is $#ret, 0, 'exactly one';
+    my $dir = $ret[0];
+    ok -d $dir, 'is a directory';
+    
+    my $file = File::Spec->catfile($dir, 'word.txt');
+    ok -f $file, 'has directory';
+
+    is slurp($file), "33\n", 'file content matches';
+
+  };
 
   subtest 'there, but not there, followed by there and there' => sub {
 

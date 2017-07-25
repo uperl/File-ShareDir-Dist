@@ -82,8 +82,14 @@ directory.
 =head2 dist_share
 
  my $dir = dist_share $dist_name;
+ my $dir = dist_share $module_name;
 
 Returns the absolute path to the share directory of the given distribution.
+
+As a convenience you can also use the "main" module name assoicated with the
+distribution.  That means if you want the share directory for thet dist
+C<Foo-Bar-Baz> you may use either C<Foo-Bar-Baz> or C<Foo::Bar::Baz> to find
+it.
 
 =cut
 
@@ -94,6 +100,7 @@ sub dist_share ($)
 {
   my($dist_name) = @_;
   
+  $dist_name =~ s/::/-/g;
   my @pm = split /-/, $dist_name;
   $pm[-1] .= ".pm";
 
