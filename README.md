@@ -10,8 +10,8 @@ Locate per-dist shared files
 
 # DESCRIPTION
 
-[File::ShareDir::Dist](https://metacpan.org/pod/File::ShareDir::Dist) finds share directories for a specific distribution.  It is similar
-to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differences:
+[File::ShareDir::Dist](https://metacpan.org/pod/File::ShareDir::Dist) finds share directories for distributions.  It is similar to [File::ShareDir](https://metacpan.org/pod/File::ShareDir)
+with a few differences:
 
 - Only supports distribution directories.
 
@@ -31,6 +31,10 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
 
     It doesn't blindly go finding the first share directory in @INC that matches the dist name.  It actually
     checks to see that it matches the .pm file that goes along with it.
+
+    That does mean that you need to have a .pm that corresponds to your dist name.  This is not
+    always the case for some older historical distributions, but it has been the recommended convetion
+    for quite some time.
 
 - No non-core dependencies.
 
