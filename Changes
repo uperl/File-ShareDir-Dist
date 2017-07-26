@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Add support for environment variable PERL_FILE_SHAREDIR_DIST
 
 0.02      2017-07-25 17:06:44 -0400
   - Add prove plugin: App::Prove::Plugin::ShareDirDist

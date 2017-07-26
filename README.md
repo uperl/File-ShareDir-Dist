@@ -77,8 +77,13 @@ to [File::ShareDir](https://metacpan.org/pod/File::ShareDir) with a few differen
         % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
         /.../share
 
+    If neither of those work then you can set PERL\_FILE\_SHAREDIR\_DIST to a dist name, directory pair
+
+        % env PERL_FILE_SHAREDIR_DIST=Foo-Bar-Baz=`pwd`/share perl -MFile::ShareDir::Dist -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+
     For [File::ShareDir](https://metacpan.org/pod/File::ShareDir) you have to either mock the `dist_dir` function or install
-    [File::ShareDir::Override](https://metacpan.org/pod/File::ShareDir::Override).
+    [File::ShareDir::Override](https://metacpan.org/pod/File::ShareDir::Override).  For testing you can use [Test::File::ShareDir](https://metacpan.org/pod/Test::File::ShareDir).  I have never
+    understood why such a simple concept needs three modules to do all of this.
 
 # FUNCTIONS
 
@@ -97,6 +102,12 @@ distribution.  That means if you want the share directory for thet dist
 it.
 
 Returns nothing if no share directory could be found.
+
+# ENVIRONMENT
+
+- PERL\_FILE\_SHAREDIR\_DIST
+
+    Can be used to set a single dist directory override.
 
 # CAVEATS
 

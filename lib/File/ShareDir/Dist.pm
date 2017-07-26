@@ -87,8 +87,13 @@ joined by the equal sign.  In other words:
  % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
  /.../share
 
+If neither of those work then you can set PERL_FILE_SHAREDIR_DIST to a dist name, directory pair
+
+ % env PERL_FILE_SHAREDIR_DIST=Foo-Bar-Baz=`pwd`/share perl -MFile::ShareDir::Dist -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+
 For L<File::ShareDir> you have to either mock the C<dist_dir> function or install
-L<File::ShareDir::Override>.
+L<File::ShareDir::Override>.  For testing you can use L<Test::File::ShareDir>.  I have never
+understood why such a simple concept needs three modules to do all of this.
 
 =back
 
@@ -122,10 +127,10 @@ sub dist_share ($)
   
   $dist_name =~ s/::/-/g;
 
-  if(my $dir = $over{$dist_name})
-  {
-    return File::Spec->rel2abs($dir);
-  }
+  local $over{$1} = $2
+    if defined $ENV{PERL_FILE_SHAREDIR_DIST} && $ENV{PERL_FILE_SHAREDIR_DIST} =~ /^(.*?)=(.*)$/;
+
+  return File::Spec->rel2abs($over{$dist_name}) if $over{$dist_name};
 
   my @pm = split /-/, $dist_name;
   $pm[-1] .= ".pm";
@@ -194,6 +199,16 @@ sub import
 }
 
 1;
+
+=head1 ENVIRONMENT
+
+=over 4
+
+=item PERL_FILE_SHAREDIR_DIST
+
+Can be used to set a single dist directory override.
+
+=back
 
 =head1 CAVEATS
 

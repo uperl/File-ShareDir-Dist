@@ -28,7 +28,7 @@ sub load
   if(-d "share")
   {
     my $dist_name = basename(File::Spec->rel2abs("."));
-    $ENV{PERL5OPT} .= " -MFile::ShareDir::Dist=-$dist_name=share";
+    $ENV{PERL_FILE_SHAREDIR_DIST} = "$dist_name=share";
   }
 }
 

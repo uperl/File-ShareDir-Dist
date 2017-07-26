@@ -174,6 +174,31 @@ subtest 'override' => sub {
     
   };
 
+  subtest 'from env' => sub {
+  
+    local %File::ShareDir::Dist::over;
+    local $ENV{PERL_FILE_SHAREDIR_DIST} = 'Foo-Bar-Baz=corpus/share1';
+    
+    local @INC = (
+      File::Spec->rel2abs(File::Spec->catdir(qw( corpus lib1 ))),
+      File::Spec->rel2abs(File::Spec->catdir(qw( corpus lib2 ))),
+      File::Spec->rel2abs(File::Spec->catdir(qw( corpus lib3 ))),
+      @INC,
+    );
+    
+    my @ret = dist_share 'Foo-Bar-Baz';
+  
+    is $#ret, 0, 'exactly one';
+    my $dir = $ret[0];
+    ok -d $dir, 'is a directory';
+    
+    my $file = File::Spec->catfile($dir, 'word.txt');
+    ok -f $file, 'has directory';
+
+    is slurp($file), "s1\n", 'file content matches';
+    
+  };
+
 };
 
 done_testing
