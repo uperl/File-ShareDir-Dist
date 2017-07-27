@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.04      2017-07-27 13:01:18 -0400
   - Fix bug where File::Spec wasn't use'd
 
 0.03      2017-07-26 07:40:10 -0400
