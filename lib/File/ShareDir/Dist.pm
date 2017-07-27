@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use 5.008001;
 use base qw( Exporter );
+use File::Spec;
 
 our @EXPORT_OK = qw( dist_share );
 
