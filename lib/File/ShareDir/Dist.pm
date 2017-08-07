@@ -161,7 +161,8 @@ sub dist_share ($)
           # put humpty dumpty back together again
           my $share = File::Spec->catdir(
             File::Spec->catpath($v,
-              File::Spec->catdir(@dirs)
+              File::Spec->catdir(@dirs),
+              '',
             ),
             'share',
           );
