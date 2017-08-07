@@ -58,7 +58,7 @@ dependencies on modules that are not part of the Perl core on older Perls.
 
 =item Works in your development tree.
 
-Uses the huristic, for determining if you are in a development tree, and if so, uses the common
+Uses the heuristic, for determining if you are in a development tree, and if so, uses the common
 convention to find the directory named C<share>.  If you are using a relative path in C<@INC>,
 if the directory C<share> is a sibling of that relative entry in C<@INC> and if the last element
 in that relative path is C<lib>.

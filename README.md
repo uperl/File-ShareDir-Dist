@@ -47,7 +47,7 @@ with a few differences:
 
 - Works in your development tree.
 
-    Uses the huristic, for determining if you are in a development tree, and if so, uses the common
+    Uses the heuristic, for determining if you are in a development tree, and if so, uses the common
     convention to find the directory named `share`.  If you are using a relative path in `@INC`,
     if the directory `share` is a sibling of that relative entry in `@INC` and if the last element
     in that relative path is `lib`.
