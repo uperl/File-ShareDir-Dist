@@ -124,7 +124,11 @@ caveats or features depending on your perspective I suppose.
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Author: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Yanick Champoux (yanick)
 
 # COPYRIGHT AND LICENSE
 
