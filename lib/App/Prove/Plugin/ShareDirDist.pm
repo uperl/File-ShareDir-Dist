@@ -11,7 +11,7 @@ use File::Basename qw( basename );
 
 =head1 SYNOPSIS
 
- % prove -PShreDirDist -lv t
+ % prove -PShareDirDist -lv t
 
 =head1 DESCRIPTION
 
