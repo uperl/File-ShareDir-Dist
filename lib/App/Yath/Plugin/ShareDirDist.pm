@@ -8,6 +8,35 @@ use File::Basename qw( basename );
 # ABSTRACT: A prove plugin that works with File::ShareDir::Dist
 # VERSION
 
+=head1 SYNOPSIS
+
+ % yath -p ShareDirDist
+
+=head1 DESCRIPTION
+
+This plugin sets the override for L<File::ShareDir::Dist> based on
+the current directory name, if there is a C<share> directory.  It
+assumes that the directory name is the same as the dist name.  This
+may not be the case, but it happens to be the convention that I use.
+
+=head1 CAVEATS
+
+As of this writing, L<Test2::Harness> and L<App::Yath> are still
+B<experimental> and can change at any time.  Documentation is sparse.
+Obviously use this plugin at your own risk.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<App::Yath>
+
+=item L<Test2::Harness>
+
+=back
+
+=cut
+
 sub options {}
 
 sub pre_init

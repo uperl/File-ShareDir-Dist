@@ -33,7 +33,7 @@ with a few differences:
     checks to see that it matches the .pm file that goes along with it.
 
     That does mean that you need to have a .pm that corresponds to your dist name.  This is not
-    always the case for some older historical distributions, but it has been the recommended convetion
+    always the case for some older historical distributions, but it has been the recommended convention
     for quite some time.
 
 - No non-core dependencies.
@@ -69,7 +69,7 @@ with a few differences:
     it would not.  For me this covers most of my needs when developing a Perl module with a share
     directory.
 
-    [prove](https://metacpan.org/pod/prove) foils this huristic by making `@INC` absolute paths.  To get around that you can use
+    [prove](https://metacpan.org/pod/prove) foils this heuristic by making `@INC` absolute paths.  To get around that you can use
     [App::Prove::Plugin::ShareDirDist](https://metacpan.org/pod/App::Prove::Plugin::ShareDirDist).
 
 - Built in override.
@@ -100,8 +100,8 @@ Functions must be explicitly exported.  They are not exported by default.
 
 Returns the absolute path to the share directory of the given distribution.
 
-As a convenience you can also use the "main" module name assoicated with the
-distribution.  That means if you want the share directory for thet dist
+As a convenience you can also use the "main" module name associated with the
+distribution.  That means if you want the share directory for the dist
 `Foo-Bar-Baz` you may use either `Foo-Bar-Baz` or `Foo::Bar::Baz` to find
 it.
 

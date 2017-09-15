@@ -44,7 +44,7 @@ It doesn't blindly go finding the first share directory in @INC that matches the
 checks to see that it matches the .pm file that goes along with it.
 
 That does mean that you need to have a .pm that corresponds to your dist name.  This is not
-always the case for some older historical distributions, but it has been the recommended convetion
+always the case for some older historical distributions, but it has been the recommended convention
 for quite some time.
 
 =item No non-core dependencies.
@@ -80,7 +80,7 @@ C<dist_share> will return the (absolute) path to ./share/data.  If you invoked i
 it would not.  For me this covers most of my needs when developing a Perl module with a share
 directory.
 
-L<prove> foils this huristic by making C<@INC> absolute paths.  To get around that you can use
+L<prove> foils this heuristic by making C<@INC> absolute paths.  To get around that you can use
 L<App::Prove::Plugin::ShareDirDist>.
 
 =item Built in override.
@@ -113,8 +113,8 @@ Functions must be explicitly exported.  They are not exported by default.
 
 Returns the absolute path to the share directory of the given distribution.
 
-As a convenience you can also use the "main" module name assoicated with the
-distribution.  That means if you want the share directory for thet dist
+As a convenience you can also use the "main" module name associated with the
+distribution.  That means if you want the share directory for the dist
 C<Foo-Bar-Baz> you may use either C<Foo-Bar-Baz> or C<Foo::Bar::Baz> to find
 it.
 

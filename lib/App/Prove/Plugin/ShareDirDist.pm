@@ -20,6 +20,18 @@ the current directory name, if there is a C<share> directory.  It
 assumes that the directory name is the same as the dist name.  This
 may not be the case, but it happens to be the convention that I use.
 
+=head1 SEE ALSO
+
+=over 4
+
+=item L<prove>
+
+=item L<App::Prove>
+
+=item L<Test::Harness>
+
+=back
+
 =cut
 
 sub load
