@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008001;
 use File::Spec;
-use File::Basename qw( basename );
+use File::Basename ();
 
 # ABSTRACT: A prove plugin that works with File::ShareDir::Dist
 # VERSION
@@ -39,7 +39,7 @@ sub load
   my($class, $p) = @_;
   if(-d "share")
   {
-    my $dist_name = basename(File::Spec->rel2abs("."));
+    my $dist_name = File::Basename::basename(File::Spec->rel2abs("."));
     $ENV{PERL_FILE_SHAREDIR_DIST} = "$dist_name=share";
   }
 }
