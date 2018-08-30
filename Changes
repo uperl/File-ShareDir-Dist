@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.07      2018-08-30 09:58:24 -0400
   - Add File::ShareDir::Dist::Install
   - Add dist_config function to File::ShareDir::Dist
 
