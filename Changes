@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Add File::ShareDir::Dist::Install
 
 0.06      2018-07-08 04:20:50 -0400
   - App::Yath::Plugin::ShareDirDist inherits from App::Yath::Plugin
