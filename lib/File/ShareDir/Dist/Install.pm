@@ -68,10 +68,39 @@ sub _mkpath
 sub install
 {
   my($source_dir, $dist_name) = @_;
-  ($source_dir, $dist_name) = @ARGV unless defined $source_dir && defined $dist_name;
-  croak "no such directory $source_dir" unless -d $source_dir;
+  ($source_dir, $dist_name) = @ARGV unless defined $source_dir || defined $dist_name;
+  croak "No such directory: undef" unless defined $source_dir;
+  croak "No such directory: $source_dir" unless -d $source_dir;
   my $dest_dir = install_dir $dist_name;
-  ...; # TODO
+
+  # Can I just say...
+  # File::Find has a terrible terrible terrible interface.
+  my @files = do {
+    require Cwd;
+    require File::Find;
+    my $save = Cwd::getcwd();
+    chdir($source_dir) || die "unable to chdir $source_dir";
+    my @list;
+    File::Find::find(sub {
+      return unless -f $_;
+      push @list, $File::Find::name;
+    }, File::Spec->curdir);
+    chdir $save;
+    @list;
+  };
+
+  require File::Basename;
+  require File::Path;
+  require File::Copy;
+
+  foreach my $file (@files)
+  {
+    my $from = File::Spec->catfile($source_dir, $file);
+    my $to   = File::Spec->catfile($dest_dir, $file);
+    my $dir  = File::Basename::dirname($to);
+    File::Path::mkpath($dir, { verbose => 0, mode => 0755 });
+    File::Copy::cp($from, $to) || die "Copy failed $from => $to: $!";
+  }
 }
 
 =head2 install_config_get

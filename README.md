@@ -109,6 +109,8 @@ Returns nothing if no share directory could be found.
 
 ## dist\_config
 
+\[version 0.07\]
+
     my $config = dist_config $dist_name;
 
 Returns the config at runtime as created by [File::ShareDir::Dist::Install](https://metacpan.org/pod/File::ShareDir::Dist::Install) and install time.
