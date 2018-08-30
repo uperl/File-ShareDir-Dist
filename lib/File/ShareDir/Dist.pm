@@ -6,7 +6,7 @@ use 5.008001;
 use base qw( Exporter );
 use File::Spec;
 
-our @EXPORT_OK = qw( dist_share );
+our @EXPORT_OK = qw( dist_share dist_config );
 
 # ABSTRACT: Locate per-dist shared files
 # VERSION
@@ -181,6 +181,32 @@ sub dist_share ($)
   return;
 }
 
+=head2 dist_config
+
+[version 0.07]
+
+ my $config = dist_config $dist_name;
+
+Returns the config at runtime as created by L<File::ShareDir::Dist::Install> and install time.
+
+=cut
+
+sub dist_config
+{
+  my($dist_name) = @_;
+  my $dir = dist_share $dist_name;
+  return {} unless defined $dir && -d $dir;
+  my $fn = File::Spec->catfile($dir, 'config.pl');
+  return {} unless -f $fn;
+  my $fh;
+  open($fh, '<', $fn) || die "unable to read $fn $!";
+  my $pl = do { local $/; <$fh> };
+  close $fh;
+  my $config = eval $pl;
+  die $@ if $@;
+  $config;
+}
+
 sub import
 {
   my($class, @args) = @_;
@@ -225,7 +251,11 @@ caveats or features depending on your perspective I suppose.
 
 =over
 
-=item L<File::ShareDir>
+=item L<File::ShareDir::Dist::Install>
+
+=item L<App::Prove::Plugin::ShareDirDist>
+
+=item L<App::Yath::Plugin::ShareDirDist>
 
 =back
 

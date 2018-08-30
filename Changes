@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - Add File::ShareDir::Dist::Install
+  - Add dist_config function to File::ShareDir::Dist
 
 0.06      2018-07-08 04:20:50 -0400
   - App::Yath::Plugin::ShareDirDist inherits from App::Yath::Plugin

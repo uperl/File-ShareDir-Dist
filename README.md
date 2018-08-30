@@ -107,6 +107,12 @@ it.
 
 Returns nothing if no share directory could be found.
 
+## dist\_config
+
+    my $config = dist_config $dist_name;
+
+Returns the config at runtime as created by [File::ShareDir::Dist::Install](https://metacpan.org/pod/File::ShareDir::Dist::Install) and install time.
+
 # ENVIRONMENT
 
 - PERL\_FILE\_SHAREDIR\_DIST
@@ -120,7 +126,9 @@ caveats or features depending on your perspective I suppose.
 
 # SEE ALSO
 
-- [File::ShareDir](https://metacpan.org/pod/File::ShareDir)
+- [File::ShareDir::Dist::Install](https://metacpan.org/pod/File::ShareDir::Dist::Install)
+- [App::Prove::Plugin::ShareDirDist](https://metacpan.org/pod/App::Prove::Plugin::ShareDirDist)
+- [App::Yath::Plugin::ShareDirDist](https://metacpan.org/pod/App::Yath::Plugin::ShareDirDist)
 
 # AUTHOR
 
