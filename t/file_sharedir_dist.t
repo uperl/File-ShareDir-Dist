@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use overload ();
-use Test::More;
+use Test::More 0.98;
 use File::Spec;
 use File::ShareDir::Dist qw( dist_share dist_config );
 
@@ -21,6 +21,7 @@ subtest 'simple' => sub {
     local @INC = (File::Spec->rel2abs(File::Spec->catdir(qw( corpus lib1 ))));
     my @ret = dist_share 'Foo-Bar-Baz';
     is_deeply \@ret, [];
+    done_testing;
   
   };
   
