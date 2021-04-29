@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More;
+use Test::More 0.98;
 use File::ShareDir::Dist::Install;
 use File::Temp qw( tempdir );
 use Cwd qw( getcwd );
