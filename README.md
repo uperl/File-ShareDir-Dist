@@ -1,12 +1,14 @@
-# File::ShareDir::Dist [![Build Status](https://secure.travis-ci.org/plicease/File-ShareDir-Dist.png)](http://travis-ci.org/plicease/File-ShareDir-Dist)
+# File::ShareDir::Dist ![linux](https://github.com/uperl/File-ShareDir-Dist/workflows/linux/badge.svg) ![macos](https://github.com/uperl/File-ShareDir-Dist/workflows/macos/badge.svg) ![windows](https://github.com/uperl/File-ShareDir-Dist/workflows/windows/badge.svg) ![cygwin](https://github.com/uperl/File-ShareDir-Dist/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/uperl/File-ShareDir-Dist/workflows/msys2-mingw/badge.svg)
 
 Locate per-dist shared files
 
 # SYNOPSIS
 
-    use File::ShareDir::Dist qw( dist_share );
-    
-    my $dir = dist_share 'Foo-Bar-Baz';
+```perl
+use File::ShareDir::Dist qw( dist_share );
+
+my $dir = dist_share 'Foo-Bar-Baz';
+```
 
 # DESCRIPTION
 
@@ -54,17 +56,23 @@ with a few differences:
 
     Example, if you have the directory structure:
 
-        lib/Foo/Bar/Baz.pm
-        share/data
+    ```
+    lib/Foo/Bar/Baz.pm
+    share/data
+    ```
 
     and you invoke perl with
 
-        % perl -Ilib -MFoo::Bar::Baz -MFile::ShareDir::Dist=dist_share -E 'say dist_share("Foo-Bar-Baz")'
+    ```
+    % perl -Ilib -MFoo::Bar::Baz -MFile::ShareDir::Dist=dist_share -E 'say dist_share("Foo-Bar-Baz")'
+    ```
 
     `dist_share` will return the (absolute) path to ./share/data.  If you invoked it with:
 
-        % export PERL5LIB `pwd`/lib
-        perl -MFoo::Bar::Baz -MFile::ShareDir::Dist=dist_share -E 'say dist_share("Foo-Bar-Baz")'
+    ```
+    % export PERL5LIB `pwd`/lib
+    perl -MFoo::Bar::Baz -MFile::ShareDir::Dist=dist_share -E 'say dist_share("Foo-Bar-Baz")'
+    ```
 
     it would not.  For me this covers most of my needs when developing a Perl module with a share
     directory.
@@ -78,12 +86,16 @@ with a few differences:
     You can also override behavior on the command line using a dash followed by a key value pair
     joined by the equal sign.  In other words:
 
-        % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
-        /.../share
+    ```
+    % perl -MFile::ShareDir::Dist=-Foo-Bar-Baz=./share -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+    /.../share
+    ```
 
     If neither of those work then you can set PERL\_FILE\_SHAREDIR\_DIST to a dist name, directory pair
 
-        % env PERL_FILE_SHAREDIR_DIST=Foo-Bar-Baz=`pwd`/share perl -MFile::ShareDir::Dist -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+    ```
+    % env PERL_FILE_SHAREDIR_DIST=Foo-Bar-Baz=`pwd`/share perl -MFile::ShareDir::Dist -E 'say File::ShareDir::Dist::dist_share("Foo-Bar-Baz")'
+    ```
 
     For [File::ShareDir](https://metacpan.org/pod/File::ShareDir) you have to either mock the `dist_dir` function or install
     [File::ShareDir::Override](https://metacpan.org/pod/File::ShareDir::Override).  For testing you can use [Test::File::ShareDir](https://metacpan.org/pod/Test::File::ShareDir).  I have never
@@ -95,8 +107,10 @@ Functions must be explicitly exported.  They are not exported by default.
 
 ## dist\_share
 
-    my $dir = dist_share $dist_name;
-    my $dir = dist_share $module_name;
+```perl
+my $dir = dist_share $dist_name;
+my $dir = dist_share $module_name;
+```
 
 Returns the absolute path to the share directory of the given distribution.
 
@@ -111,7 +125,9 @@ Returns nothing if no share directory could be found.
 
 \[version 0.07\]
 
-    my $config = dist_config $dist_name;
+```perl
+my $config = dist_config $dist_name;
+```
 
 Returns the config at runtime as created by [File::ShareDir::Dist::Install](https://metacpan.org/pod/File::ShareDir::Dist::Install) and install time.
 
