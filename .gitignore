@@ -1,2 +1,4 @@
 /File-ShareDir-Dist-*
 /.build
+*.old
+*.orig
