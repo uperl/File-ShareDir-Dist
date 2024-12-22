@@ -1,4 +1,4 @@
-# File::ShareDir::Dist ![linux](https://github.com/uperl/File-ShareDir-Dist/workflows/linux/badge.svg) ![macos](https://github.com/uperl/File-ShareDir-Dist/workflows/macos/badge.svg) ![windows](https://github.com/uperl/File-ShareDir-Dist/workflows/windows/badge.svg) ![msys2-mingw](https://github.com/uperl/File-ShareDir-Dist/workflows/msys2-mingw/badge.svg)
+# File::ShareDir::Dist ![linux](https://github.com/uperl/File-ShareDir-Dist/workflows/linux/badge.svg) ![macos](https://github.com/uperl/File-ShareDir-Dist/workflows/macos/badge.svg) ![windows](https://github.com/uperl/File-ShareDir-Dist/workflows/windows/badge.svg)
 
 Locate per-dist shared files
 
