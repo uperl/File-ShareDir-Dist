@@ -1,4 +1,4 @@
-# File::ShareDir::Dist ![linux](https://github.com/uperl/File-ShareDir-Dist/workflows/linux/badge.svg) ![macos](https://github.com/uperl/File-ShareDir-Dist/workflows/macos/badge.svg) ![windows](https://github.com/uperl/File-ShareDir-Dist/workflows/windows/badge.svg) ![cygwin](https://github.com/uperl/File-ShareDir-Dist/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/uperl/File-ShareDir-Dist/workflows/msys2-mingw/badge.svg)
+# File::ShareDir::Dist ![linux](https://github.com/uperl/File-ShareDir-Dist/workflows/linux/badge.svg) ![macos](https://github.com/uperl/File-ShareDir-Dist/workflows/macos/badge.svg) ![windows](https://github.com/uperl/File-ShareDir-Dist/workflows/windows/badge.svg) ![msys2-mingw](https://github.com/uperl/File-ShareDir-Dist/workflows/msys2-mingw/badge.svg)
 
 Locate per-dist shared files
 
@@ -158,7 +158,7 @@ Yanick Champoux (yanick)
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017,2018 by Graham Ollis.
+This software is copyright (c) 2017-2024 by Graham Ollis.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
